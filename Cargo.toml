@@ -1,0 +1,23 @@
+[package]
+name = "short_cli"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ishan Joshi <noobscience@duck.com>"]
+description = "A simple CLI written in Rust to shorten URLs using my own URL shortener"
+repository = "https://github.com/newtoallofthis123/short_cli"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+inquire = {version = "*"}
+bunt = {version = "*"}
+clap = {version = "*", features = ["derive"]}
+regex = {version = "*"}
+serde = {version = "*"}
+serde_json = {version = "*"}
+reqwest = {version = "*", features = ["json"]}
+tokio = {version = "*", features = ["full"]}
+indicatif = {version = "*"}
+clipboard = { version = "*"}
+figlet-rs = {version = "*"}
+human-panic = "1.1.5"
