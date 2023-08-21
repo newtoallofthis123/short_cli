@@ -1,6 +1,6 @@
 [package]
 name = "short_cli"
-version = "0.1.0"
+version = "0.1.4"
 edition = "2021"
 authors = ["Ishan Joshi <noobscience@duck.com>"]
 description = "A simple CLI written in Rust to shorten URLs using my own URL shortener"
@@ -21,3 +21,4 @@ indicatif = {version = "*"}
 clipboard = { version = "*"}
 figlet-rs = {version = "*"}
 human-panic = "1.1.5"
+sha2 = { version = "*", default-features = false }

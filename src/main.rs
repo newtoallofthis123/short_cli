@@ -39,7 +39,6 @@ async fn main() {
         bunt::println!("It is copied to your clipboard!");
         std::process::exit(0);
     }
-
     let url = args.url.unwrap_or_else(|| inputs::get_url());
 
     if utils::is_valid_url(&url) {
@@ -50,6 +49,11 @@ async fn main() {
     let res: serde_json::Value;
     if args.custom.is_some() {
         bunt::println!("{$green}Custom{/$} slug provided, continuing...");
+        let password = inputs::get_password();
+        let password_hash = inputs::hash_password(&password);
+        if password_hash != "493196b35d0d79e6c920dd6033d14dc6b0a22731b165c9e61eb517fc2da46d97"{
+            utils::exit("Invalid password!");
+        }
         res = web::send_sudo_request(&url, &args.custom.unwrap()).await;
     } else {
         res = web::send_request(&url).await;
