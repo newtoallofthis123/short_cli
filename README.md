@@ -1,4 +1,4 @@
-# NoobShort CLI
+# NoobShort CLI (nshrt)
 
 NoobShort is a simple to use URL shortener. It is just a small part of
 my site [noobscience.rocks](https://noobscience.rocks).
@@ -13,16 +13,25 @@ You can check out the web interface at [noobscience/go](https://noobscience.rock
 
 ## Installation
 
-NoobShort CLI is very easy to install. Just clone the repo and run
-`cargo build --release`. Then, copy the binary from `target/release/short_cli`
-to wherever you want it to be. I recommend `/usr/local/bin/short`, so that
-you can just type `short <url>` from anywhere. Just copy paste the following
+~~You need to manually compile it~~
+
+Cargo binary is now available. You can install it with cargo by running
+
+```bash
+cargo install nshrt
+```
+
+### Local compilation
+
+You are free to compile it yourself. You need to have Rust >= 1.4.0 and Cargo >= 0.6.0.
+Then, just clone the repo and run `cargo build --release`. The binary will
+be in `target/release/nshrt`.
 
 ```bash
 git clone https://github.com/newtoallofthis123/short_cli/
 cd short_cli
 cargo build --release
-sudo cp target/release/short_cli /usr/local/bin/short
+sudo cp target/release/nshrt /usr/local/bin/nshrt
 ```
 
 However, if you are not a rustecean, you can download the binary from
@@ -36,9 +45,9 @@ Thanks!
 
 ## Usage
 
-NoobShort CLI is very easy to use. Just type `short <url>` and it will
+NoobShort CLI is very easy to use. Just type `nshrt <url>` and it will
 return the shortened URL. If you want to use a custom URL, type
-`short <url> --custom <custom>`. If the custom URL is already taken, it will
+`nshrt <url> --custom <custom>`. If the custom URL is already taken, it will
 return an error.
 
 It is very simple and easy to use. I hope you enjoy it.
@@ -60,10 +69,6 @@ projects. Just make sure to give me credit and keep in mind the [Terms of Servic
 
 If you want to contribute, feel free to fork the repo and make a pull
 request. I will review it and merge it if it is good.
-
-To have this locally, you need to have Rust >= 1.4.0 and Cargo >= 0.6.0.
-Then, just clone the repo and run `cargo build --release`. The binary will
-be in `target/release/short_cli`.
 
 To develop, open it in your favorite editor and start coding. To run it,
 just run `cargo run` and it will compile and run it for you.
