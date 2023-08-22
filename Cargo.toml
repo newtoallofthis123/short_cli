@@ -3,7 +3,6 @@ name = "short"
 version = "0.1.4"
 edition = "2021"
 license = "MIT"
-license-file = "LICENSE"
 keywords = ["url", "shortener", "cli", "rust"]
 readme = "README.md"
 authors = ["Ishan Joshi <noobscience@duck.com>"]
