@@ -9,7 +9,7 @@ You can check out the web interface at [noobscience/go](https://noobscience.rock
 
 ## Screen shot
 
-![Screenshot](screenshot.png)
+![Screenshot](/assets/screenshot.png)
 
 ## Installation
 
