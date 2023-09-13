@@ -18,7 +18,7 @@ pub fn exit(msg: &str){
 
 //* Print a small footer */
 pub fn print_footer(){
-    bunt::println!("Thanks for using {$blue}NoobShort{/$}, made with {$red}♥{/$} by {$yellow}Ishan Joshi{/$}");
+    bunt::println!("Thanks for using {$blue}NoobShort{/$}, made with {$red}♥{/$} by {$yellow}Ishan{/$}");
 }
 
 //* Pretty print the result */
@@ -38,16 +38,10 @@ pub fn copy(msg: &str){
 
 //* Print a slash screen */
 pub fn slash_screen(){
-
-    let figure = r#"
-    _   __            __   _____ __               __ 
-    / | / /___  ____  / /_ / ___// /_  ____  _____/ /_
-   /  |/ / __ \/ __ \/ __ \\__ \/ __ \/ __ \/ ___/ __/
-  / /|  / /_/ / /_/ / /_/ /__/ / / / / /_/ / /  / /_  
- /_/ |_/\____/\____/_.___/____/_/ /_/\____/_/   \__/  
-    "#;
-
-    bunt::println!("{$blue}{}{/$}", figure);
-    let line_break = "-".repeat(figure.to_string().lines().next().unwrap().len());
-    bunt::println!("{$blue}{}{/$}", line_break);
+    bunt::println!("{$blue}    _   __            __   _____ __               __ {/$}");
+    bunt::println!("{$yellow}   / | / /___  ____  / /_ / ___// /_  ____  _____/ /_{/$}");
+    bunt::println!("{$red}  /  |/ / __ \\/ __ \\/ __ \\\\__ \\/ __ \\/ __ \\/ ___/ __/{/$}");
+    bunt::println!("{$yellow} / /|  / /_/ / /_/ / /_/ /__/ / / / / /_/ / /  / /_  {/$}");
+    bunt::println!("{$blue}/_/ |_/\\____/\\____/_.___/____/_/ /_/\\____/_/   \\__/ {/$} {$underline}v.2.0{/$}");
+    bunt::println!("              ");
 }

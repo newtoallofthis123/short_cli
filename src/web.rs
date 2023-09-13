@@ -1,8 +1,6 @@
 use indicatif::{ProgressBar, ProgressStyle};
 use std::collections::HashMap;
 
-//TODO: Merge the two functions into one
-
 //? The URL is the URL of the API endpoint
 //? You are free to use your own API endpoint, but make sure it has the same functionality
 //? The underlying API returns the following JSON:
@@ -39,21 +37,26 @@ pub async fn send_request(url: &str, slug: &str, custom: bool)-> serde_json::Val
     form_data.insert("slug", slug);
 
     // Create a new progress bar
-    let spinner = ProgressBar::new_spinner();
-    spinner.set_style(  
+    let pb = ProgressBar::new_spinner();
+    pb.enable_steady_tick(std::time::Duration::from_millis(120));
+    pb.set_style(
         ProgressStyle::with_template("{spinner:.blue} {msg}")
             .unwrap()
+            // For more spinners check out the cli-spinners project:
+            // https://github.com/sindresorhus/cli-spinners/blob/master/spinners.json
             .tick_strings(&[
-                "▹▹▹▹▹",
-                "▸▹▹▹▹",
-                "▹▸▹▹▹",
-                "▹▹▸▹▹",
-                "▹▹▹▸▹",
-                "▹▹▹▹▸",
-                "▪▪▪▪▪",
+                "⣾",
+                "⣽",
+                "⣻",
+                "⢿",
+                "⡿",
+                "⣟",
+                "⣯",
+                "⣷",
+                "(200 Ok)"
             ]),
     );
-    spinner.set_message("Sending request...");
+    pb.set_message("Sending Request...");
 
     // Send the request to the API
     let response = client.post(
@@ -70,6 +73,9 @@ pub async fn send_request(url: &str, slug: &str, custom: bool)-> serde_json::Val
 
     // Get the response text
     let response_text = response.text().await.unwrap();
+
+    // Stop the progress bar
+    pb.finish_with_message("Acknowledged!");
 
     // Convert the response text to JSON
     let json = convert_to_json(&response_text);
