@@ -54,9 +54,9 @@ async fn main() {
         if password_hash != "493196b35d0d79e6c920dd6033d14dc6b0a22731b165c9e61eb517fc2da46d97"{
             utils::exit("Invalid password!");
         }
-        res = web::send_sudo_request(&url, &args.custom.unwrap()).await;
+        res = web::send_request(&url, &args.custom.unwrap(), true).await;
     } else {
-        res = web::send_request(&url).await;
+        res = web::send_request(&url, &"", false).await;
     }
     utils::print_result(&res);
     utils::print_footer();
