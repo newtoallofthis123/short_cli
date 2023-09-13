@@ -42,8 +42,6 @@ pub async fn send_request(url: &str, slug: &str, custom: bool)-> serde_json::Val
     pb.set_style(
         ProgressStyle::with_template("{spinner:.blue} {msg}")
             .unwrap()
-            // For more spinners check out the cli-spinners project:
-            // https://github.com/sindresorhus/cli-spinners/blob/master/spinners.json
             .tick_strings(&[
                 "⣾",
                 "⣽",
