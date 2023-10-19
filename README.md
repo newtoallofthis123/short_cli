@@ -1,5 +1,7 @@
 # NoobShort CLI (nshrt)
 
+> version 0.2
+
 NoobShort is a simple to use URL shortener. It is just a small part of
 my site [noobscience.rocks](https://noobscience.rocks).
 I made a very pretty web interface for it, but I also wanted to make a CLI
