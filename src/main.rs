@@ -22,8 +22,7 @@ mod utils;
 mod web;
 
 fn get_inputs()-> Args{
-    let args = Args::parse();
-    return args;
+    Args::parse()
 }
 
 #[tokio::main]
@@ -39,26 +38,28 @@ async fn main() {
         bunt::println!("It is copied to your clipboard!");
         std::process::exit(0);
     }
-    let url = args.url.unwrap_or_else(|| inputs::get_url());
+    let url = args.url.unwrap_or_else(inputs::get_url);
 
     if utils::is_valid_url(&url) {
         bunt::println!("{$green}Valid{/$} URL, continuing...");
     } else {
         utils::exit("Invalid URL!");
     }
-    let res: serde_json::Value;
-    if args.custom.is_some() {
-        bunt::println!("{$green}Custom{/$} slug provided, continuing...");
+    let res = match args.custom {
+        Some(_) => {
+                bunt::println!("{$green}Custom{/$} slug provided, continuing...");
         let password = inputs::get_password();
         let password_hash = inputs::hash_password(&password);
         if password_hash != "493196b35d0d79e6c920dd6033d14dc6b0a22731b165c9e61eb517fc2da46d97"{
             utils::exit("Invalid password!");
         }
-        res = web::send_request(&url, &args.custom.unwrap(), true).await;
-    } else {
-        res = web::send_request(&url, &"", false).await;
-    }
+
+        web::send_request(&url, &args.custom.unwrap(), true).await
+        }
+        None => {
+            web::send_request(&url, "", false).await
+        }
+    };
     utils::print_result(&res);
     utils::print_footer();
 }
-

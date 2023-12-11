@@ -10,7 +10,7 @@ pub fn is_valid_url(url: &str) -> bool {
 }
 
 pub fn exit(msg: &str){
-    //* Peacefully exit the program with an error message */ 
+    //* Peacefully exit the program with an error message */
     bunt::println!("{$red}{}{/$}, exiting program...", msg);
     print_footer();
     std::process::exit(1);

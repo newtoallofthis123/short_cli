@@ -3,16 +3,14 @@ use sha2::{Sha256, Digest};
 
 //* Uses inquire crate to get the URL from the user
 pub fn get_url() -> String {
-    let url = Text::new("Enter the URL: ").prompt().expect("Failed to get URL!, exiting...");
-    return url;
+    Text::new("Enter the URL: ").prompt().expect("Failed to get URL!, exiting...")
 }
 
 pub fn get_password() -> String{
-    let name = Password::new("Enter a sudo password:")
+    Password::new("Enter a sudo password:")
         .with_display_mode(PasswordDisplayMode::Masked)
         .without_confirmation()
-        .prompt();
-    return name.unwrap();
+        .prompt().unwrap()
 }   
 
 /// Okay, so the way I am planning to handle this password is not the most secure one.
@@ -26,6 +24,5 @@ pub fn hash_password(password: &str) -> String{
     let mut hasher = Sha256::new();
     hasher.update(password);
     let result = hasher.finalize();
-    let result = format!("{:x}", result);
-    return result;
+    format!("{:x}", result)
 }

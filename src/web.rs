@@ -8,19 +8,17 @@ use std::collections::HashMap;
 //?     "go_data": "mongoDB document of the shortened URL",
 //?     "slug": "slug of the shortened URL",
 //? }
-const REQUEST_URL: &str = "https://www.noobscience.rocks/api/go";
-const SUDO_REQUEST_URL: &str = "https://www.noobscience.rocks/api/go/sudo";
+const REQUEST_URL: &str = "https://nutils.vercel.app/api/go";
+const SUDO_REQUEST_URL: &str = "https://nutils.vercel.app/api/go/sudo";
 
 fn get_client()-> reqwest::Client{
-    let client = reqwest::Client::new();
-    return client;   
+    reqwest::Client::new()
 }
 
 //* Simple Function to convert the response text to JSON */
 fn convert_to_json(txt: &str)-> serde_json::Value{
     //Use serde_json to convert the response to JSON
-    let json = serde_json::from_str(txt).unwrap();
-    return json;
+    serde_json::from_str(txt).unwrap()
 }
 
 //* Uses Rust Async function powered by Tokio and reqwest to send the request to the API
@@ -76,6 +74,5 @@ pub async fn send_request(url: &str, slug: &str, custom: bool)-> serde_json::Val
     pb.finish_with_message("Acknowledged!");
 
     // Convert the response text to JSON
-    let json = convert_to_json(&response_text);
-    return json;    
+    convert_to_json(&response_text)
 }
